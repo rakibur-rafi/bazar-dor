@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${hindi_siliguri.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white">
+      <body className="min-h-full flex flex-col bg-[#f0f5f0] text-black">
         <Navbar/>
         <main>
           {children}

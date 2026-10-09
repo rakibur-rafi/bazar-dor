@@ -9,6 +9,7 @@ const PriceTicker = ({ products }) => {
                 speed={40}
                 pauseOnHover={true}
                 autoFill={true}
+                
             >
                 {products.map(product => (
                     <div key={product.id} className="flex items-center gap-2 px-6 py-2 border-r border-[#F0F5F0] whitespace-nowrap ">

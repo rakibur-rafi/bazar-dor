@@ -9,11 +9,11 @@ const NavTop = () => {
 
     const navButtons = (
         <>
-            <button className="btn btn-ghost text-black text-sm px-2 sm:px-4 py-2.5 font-semibold rounded-lg">
+            <button className=" bg-white border-none shadow-none text-sm px-2 sm:px-4 py-2.5 font-semibold rounded-lg">
                 সাইন ইন
             </button>
 
-            <button className="btn bg-[#05893E] border-none text-sm text-white shadow-md shadow-[#05893E]/60 px-2 sm:px-4 py-2.5 font-semibold rounded-lg">
+            <button className="btn bg-[#05893E] border-none text-sm shadow-md shadow-[#05893E]/60 px-2 sm:px-4 py-2.5 font-semibold rounded-lg">
                 সাইন আপ
             </button>
         </>
