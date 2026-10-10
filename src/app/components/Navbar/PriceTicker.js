@@ -1,6 +1,7 @@
 
 import React from 'react';
 import FastMarquee from 'react-fast-marquee';
+import Link from 'next/link';
 
 const PriceTicker = ({ products }) => {
     return (
@@ -12,7 +13,7 @@ const PriceTicker = ({ products }) => {
                 
             >
                 {products.map(product => (
-                    <div key={product.id} className="flex items-center gap-2 px-6 py-2 border-r border-[#F0F5F0] whitespace-nowrap ">
+                    <Link href={`/product/${product.id}`} key={product.id} className="flex items-center gap-2 px-6 py-2 border-r border-[#F0F5F0] whitespace-nowrap ">
                         <span>{product.image}</span>
                         <span className="text-sm text-[#1D271F]">
                             {product.nameBn}
@@ -38,7 +39,7 @@ const PriceTicker = ({ products }) => {
                                 : '—'} 
                             <span> {product.change.pct.toLocaleString("bn-BD")}%</span>
                         </span>
-                    </div>
+                    </Link>
                 ))}
             </FastMarquee>
         </div>

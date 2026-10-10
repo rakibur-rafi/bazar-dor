@@ -10,13 +10,14 @@ const NavTop = () => {
 
     const navButtons = (
         <>
-            <button className="btn bg-white border-none shadow-none text-sm px-2 sm:px-4 py-2.5 font-semibold rounded-lg">
+            <Link href="/sign-in"><button className="btn bg-white text-black border-none shadow-none text-sm px-2 sm:px-4 py-2.5 font-semibold rounded-lg">
                 সাইন ইন
-            </button>
+            </button></Link>
 
+            <Link href="/sign-up">
             <button className="btn bg-[#05893E] border-none text-sm shadow-md shadow-[#05893E]/60 px-2 sm:px-4 py-2.5 font-semibold rounded-lg">
                 সাইন আপ
-            </button>
+            </button></Link>
         </>
     );
 
