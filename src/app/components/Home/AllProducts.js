@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const AllProducts = ({products}) => {
     const units = {
@@ -8,7 +9,7 @@ const AllProducts = ({products}) => {
     dozen: "ডজন",
     }
     return (
-        <div className='flex flex-col gap-4'>
+        <div id='সব-পণ্য' className='flex flex-col gap-4'>
             <div className='flex flex-col gap-3'>
                 <h1 className='text-xl font-bold text-[#1D271F]'>সব পণ্য</h1>
                 <p className='text-sm text-[#1D271F]/70'>মোট {products.length.toLocaleString('bn-BD')}টি পণ্য দেখানো হচ্ছে</p>
@@ -16,7 +17,7 @@ const AllProducts = ({products}) => {
             <div className='grid grid-cols-1 md:grid-cols-3 gap-2'>
                 {
                     products.map(product => (
-                        <div key={product.id} className='flex flex-col gap-4 bg-[#FAFCFA] border border-[#E1E8E1] rounded-3xl p-4'>
+                        <Link href={`/product/${product.id}`} key={product.id} className='flex flex-col gap-4 bg-[#FAFCFA] border border-[#E1E8E1] rounded-3xl p-4'>
                             <div className='flex items-center gap-3'>
                                 <p className='bg-[#F0F5F0] px-3 py-2 rounded-xl'>{product.image}</p>
                                 <div className='flex flex-col gap-1'>
@@ -52,7 +53,7 @@ const AllProducts = ({products}) => {
                                         
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
             </div>

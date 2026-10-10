@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const ChangeDown = ({down}) => {
     const units = {
@@ -17,7 +18,7 @@ const ChangeDown = ({down}) => {
             <div className='grid grid-cols-1 md:grid-cols-3 gap-2'>
                 {
                     down.map(product => (
-                        <div key={product.id} className='flex flex-col gap-4 bg-[#FAFCFA] border border-[#E1E8E1] rounded-3xl p-4'>
+                        <Link href={`/product/${product.id}`} key={product.id} className='flex flex-col gap-4 bg-[#FAFCFA] border border-[#E1E8E1] rounded-3xl p-4'>
                             <div className='flex items-center gap-3'>
                                 <p className='bg-[#F0F5F0] px-3 py-2 rounded-xl'>{product.image}</p>
                                 <div className='flex flex-col gap-1'>
@@ -39,7 +40,7 @@ const ChangeDown = ({down}) => {
                                         <span className='text-sm font-bold'>{product.change.pct.toLocaleString('bn-BD')}%</span></p>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
             </div>

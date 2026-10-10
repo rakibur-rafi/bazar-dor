@@ -4,8 +4,7 @@ import Link from 'next/link';
 
 const NavCategories = async () => {
     const res = await fetch(
-        'https://api.api-store.workers.dev/api/bazardor/categories'
-    );
+        'https://api.api-store.workers.dev/api/bazardor/categories');
 
     const categories = await res.json();
 

@@ -21,9 +21,9 @@ return (
                         চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
                     </p>
 
-                    <button className="btn bg-[#05893E] text-sm shadow-md shadow-[#05893E]/60 text-white border-none rounded-xl px-6">
+                    <a href="#সব-পণ্য"><button className="btn bg-[#05893E] text-sm shadow-md shadow-[#05893E]/60 text-white border-none rounded-xl px-6">
                         সব পণ্য দেখুন
-                    </button>
+                    </button></a>
                 </div>
 
                 <div className="flex justify-end max-sm:justify-center">
