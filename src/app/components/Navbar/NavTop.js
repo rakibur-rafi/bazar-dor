@@ -2,24 +2,14 @@
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
+import UserInfo from './UserInfo';
 
 const NavTop = () => {
     const date = new Date().toLocaleDateString("bn-BD", {
         dateStyle: "full",
     });
 
-    const navButtons = (
-        <>
-            <Link href="/sign-in"><button className="btn bg-white text-black border-none shadow-none text-sm px-2 sm:px-4 py-2.5 font-semibold rounded-lg">
-                সাইন ইন
-            </button></Link>
-
-            <Link href="/sign-up">
-            <button className="btn bg-[#05893E] border-none text-sm shadow-md shadow-[#05893E]/60 px-2 sm:px-4 py-2.5 font-semibold rounded-lg">
-                সাইন আপ
-            </button></Link>
-        </>
-    );
+   
 
     return (
         <div className="w-full border-b border-[#F0F5F0]">
@@ -42,7 +32,7 @@ const NavTop = () => {
                 </div>
 
                 <div className="flex gap-1 sm:gap-2 shrink-0">
-                    {navButtons}
+                    <UserInfo/>
                 </div>
             </div>
         </div>

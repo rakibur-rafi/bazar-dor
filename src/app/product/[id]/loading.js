@@ -4,9 +4,7 @@ import React from "react";
 const Loading = () => {
     return (
         <div className="mx-auto max-w-7xl px-4">
-            {/* Product Header Skeleton */}
             <div className="mt-8 mb-4 flex flex-col gap-6 rounded-3xl border border-[#E1E8E1] bg-[#fafcfa] p-6 sm:flex-row sm:items-center sm:justify-between">
-                {/* Product Information */}
                 <div className="flex items-center gap-4">
                     <div className="skeleton h-20 w-20 shrink-0 rounded-xl bg-[#f0f5f0]" />
 
@@ -31,21 +29,17 @@ const Loading = () => {
                 </div>
             </div>
 
-            {/* Market Price Table Skeleton */}
             <div className="mt-6 overflow-hidden rounded-2xl border border-[#E1E8E1] bg-white">
-                {/* Table Heading */}
                 <div className="border-b border-[#E1E8E1] bg-[#fafcfa] p-5">
                     <div className="skeleton h-6 w-48 bg-[#E1E8E1]" />
                 </div>
 
-                {/* Table Header */}
                 <div className="grid grid-cols-3 gap-4 border-b border-[#E1E8E1] p-4">
                     <div className="skeleton h-4 w-20 bg-[#E1E8E1]" />
                     <div className="skeleton h-4 w-16 bg-[#E1E8E1]" />
                     <div className="skeleton h-4 w-16 bg-[#E1E8E1]" />
                 </div>
 
-                {/* Table Rows */}
                 <div className="divide-y divide-[#E1E8E1]">
                     {Array.from({ length: 6 }).map((_, index) => (
                         <div

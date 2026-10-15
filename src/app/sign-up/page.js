@@ -1,8 +1,28 @@
-
+"use client";
 import React from "react";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 const SignUp = () => {
+    const onSubmit= async(e)=>{
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const user= Object.fromEntries(formData);
+        const{data, error} =await authClient.signUp.email({
+            ...user,
+            callbackURL: '/sign-in'
+        })
+        console.log(data);
+        if(data){
+            toast.success('অ্যাকাউন্ট তৈরি হয়েছে');
+            redirect('/sign-in')
+        }
+        if(error){
+            toast.error(error.message);
+        }
+    }
     return (
         <div className="flex  items-center justify-center px-4 py-10">
             <div className="w-full max-w-md">
@@ -18,7 +38,7 @@ const SignUp = () => {
                     </div>
 
                     {/* Signup Form */}
-                    <form className="space-y-5 w-full max-w-md rounded-2xl border border-[#E1E8E1] bg-white p-6 shadow-sm sm:p-8">
+                    <form onSubmit={onSubmit} className="space-y-5 w-full max-w-md rounded-2xl border border-[#E1E8E1] bg-white p-6 shadow-sm sm:p-8">
                         <div>
                             <label
                                 htmlFor="name"
@@ -79,26 +99,6 @@ const SignUp = () => {
                             <p className="mt-1.5 text-xs text-[#1d271f]/50">
                                 কমপক্ষে ৮ অক্ষরের পাসওয়ার্ড দিন।
                             </p>
-                        </div>
-
-                        <div>
-                            <label
-                                htmlFor="confirmPassword"
-                                className="mb-2 block text-sm font-semibold text-[#1d271f]"
-                            >
-                                পাসওয়ার্ড নিশ্চিত করুন
-                            </label>
-
-                            <input
-                                id="confirmPassword"
-                                name="confirmPassword"
-                                type="password"
-                                placeholder="পাসওয়ার্ড আবার লিখুন"
-                                autoComplete="new-password"
-                                minLength={8}
-                                required
-                                className="w-full rounded-xl border border-[#E1E8E1] bg-[#FAFCFA] px-4 py-3 text-sm text-[#1d271f] outline-none transition placeholder:text-[#1d271f]/40 focus:border-[#1A9951] focus:ring-2 focus:ring-[#1A9951]/10"
-                            />
                         </div>
 
                         <button

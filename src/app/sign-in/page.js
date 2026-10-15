@@ -1,8 +1,28 @@
-
+"use client";
 import React from "react";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 const SignIn = () => {
+    const onSubmit= async(e)=>{
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const user= Object.fromEntries(formData);
+            const{data, error} =await authClient.signIn.email({
+                ...user,
+                callbackURL: '/'
+            })
+            console.log(data);
+            if(data){
+                toast.success('সাইন ইন হয়েছে');
+                redirect('/')
+            }
+            if(error){
+                toast.error(error.message);
+            }
+        }
     return (
         <div className="flex items-center justify-center px-4 py-10">
             <div className="w-full max-w-md ">
@@ -18,7 +38,7 @@ const SignIn = () => {
                 </div>
 
                 {/* Sign In Form */}
-                <form className="space-y-5 w-full max-w-md rounded-2xl border border-[#E1E8E1] bg-white p-6 shadow-sm sm:p-8">
+                <form onSubmit={onSubmit} className="space-y-5 w-full max-w-md rounded-2xl border border-[#E1E8E1] bg-white p-6 shadow-sm sm:p-8">
                     {/* Email */}
                     <div>
                         <label
