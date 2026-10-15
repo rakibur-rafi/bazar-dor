@@ -71,7 +71,7 @@ const MarketPriceTable = ({ markets, unit }) => {
                             গড় দাম
                         </p>
 
-                        <p className="mt-2 text-2xl font-bold text-[#1d271f]">
+                        <p className="mt-2 text-2xl font-bold text-[#1A9951]">
                             ৳{avgPrice.toLocaleString("bn-BD")}
                         </p>
 

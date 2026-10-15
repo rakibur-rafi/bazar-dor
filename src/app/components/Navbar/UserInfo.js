@@ -5,6 +5,9 @@ import React from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/dist/server/api-utils";
+import Image from "next/image";
+import { FaUserCircle } from "react-icons/fa";
+import { IoChevronDownOutline } from "react-icons/io5";
 
 const UserInfo = () => {
     const { data: session } = authClient.useSession();
@@ -18,27 +21,28 @@ const UserInfo = () => {
         <div>
             {user ? (
                 <div className="dropdown dropdown-end">
-                    <button
+                    <div
                         tabIndex={0}
-                        className="btn rounded-lg border-none bg-white px-2 text-sm font-semibold text-black shadow-none sm:px-4"
+                        className="btn rounded-lg border-none bg-white px-2 text-sm text-[#1d271f] shadow-none sm:px-4 flex gap-3"
                     >
-                        {user.name}
-
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="m6 9 6 6 6-6"
+                        {user.image ? (
+                            <Image
+                                width={32}
+                                height={32}
+                                src={user.image}
+                                alt={user.name || "User"}
+                                className="rounded-xl"
                             />
-                        </svg>
-                    </button>
+                        ) : (
+                            <FaUserCircle className="h-6 w-6 text-[#05893E]" />
+                        )}
+
+                        <span className="max-w-28 truncate">
+                            {user.name}
+                        </span>
+
+                        <IoChevronDownOutline className="h-3 w-3" />
+                    </div>
 
                     <ul
                         tabIndex={0}
