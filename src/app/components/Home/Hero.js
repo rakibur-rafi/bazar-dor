@@ -33,7 +33,6 @@ return (
                     width={315}
                     height={315}
                     loading='eager'
-                    className="object-cover"
                     />
                 </div>
          
