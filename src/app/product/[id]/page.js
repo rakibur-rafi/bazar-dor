@@ -1,5 +1,5 @@
-
 import MarketPriceTable from "@/app/components/Product/MarketPriceTable";
+import NotFound from "@/app/not-found";
 import React from "react";
 
 const ProductDetails = async ({ params }) => {
@@ -8,11 +8,12 @@ const ProductDetails = async ({ params }) => {
     const res = await fetch(
         `https://api.api-store.workers.dev/api/bazardor/products/${id}`
     );
-
+    if(!res.ok){
+        return <NotFound/>
+    }
     const product = await res.json();
-
+    
     const markets = product.markets;
-
 
     const units = {
         kg: "কেজি",
@@ -24,15 +25,15 @@ const ProductDetails = async ({ params }) => {
     return (
         <div className="mx-auto max-w-7xl px-4">
             <div>
-                <div className="mt-8 mb-4 flex items-center justify-between rounded-3xl border border-[#E1E8E1] bg-[#fafcfa] p-6">
-                    <div className="flex items-center gap-4">
-                        <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl bg-[#f0f5f0] text-4xl">
+                <div className="mt-8 mb-4 flex flex-col gap-5 rounded-3xl border border-[#E1E8E1] bg-[#fafcfa] p-4 sm:p-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div className="flex min-w-0 items-start gap-3 sm:items-center sm:gap-4">
+                        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[#f0f5f0] text-3xl sm:h-20 sm:w-20 sm:text-4xl">
                             {product.image}
                         </div>
 
-                        <div className="flex flex-col gap-1">
+                        <div className="flex min-w-0 flex-col gap-1">
                             <div>
-                                <h1 className="text-3xl font-bold text-[#1d271f]">
+                                <h1 className="break-words text-2xl font-bold text-[#1d271f] sm:text-3xl">
                                     {product.nameBn}
                                 </h1>
 
@@ -76,7 +77,7 @@ const ProductDetails = async ({ params }) => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col items-center rounded-3xl bg-[#F0F5F0] p-5">
+                    <div className="flex w-full shrink-0 flex-col items-center rounded-3xl bg-[#F0F5F0] p-4 sm:p-5 lg:w-auto">
                         <p className="text-sm text-[#1d271f]/70">
                             আজকের দাম
                         </p>
@@ -108,6 +109,7 @@ const ProductDetails = async ({ params }) => {
                     </div>
                 </div>
             </div>
+
             <MarketPriceTable
                 markets={markets}
                 unit={product.unit}

@@ -2,6 +2,7 @@ import { Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
+import Footer from "./components/Footer";
 
 const hindi_siliguri = Hind_Siliguri({
   weight: ["400", "500", "600", "700"],
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
         <main>
           {children}
         </main>
+        <Footer/>
       </body>
     </html>
   );

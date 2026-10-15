@@ -37,7 +37,7 @@ const Profile = () => {
 
     if (!user) {
         return (
-            <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4 px-4">
+            <div className="flex flex-col items-center justify-center gap-4 px-4">
                 <p className="text-[#1d271f]/70">
                     আপনার প্রোফাইল দেখতে সাইন ইন করুন।
                 </p>
@@ -53,7 +53,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="px-4 py-10 sm:py-14">
+        <div className="min-h-[80vh] px-4 py-10 sm:py-14">
             <div className="mx-auto w-full max-w-3xl">
                 <div className="mb-6">
                     <h1 className="text-2xl font-bold text-[#1d271f]">

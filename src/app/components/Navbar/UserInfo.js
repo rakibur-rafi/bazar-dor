@@ -46,7 +46,7 @@ if (isPending) {
                     <div
                         tabIndex={0}
                         role="button"
-                        className="btn flex gap-3 rounded-lg border-none bg-white px-2 text-sm text-[#1d271f] shadow-none sm:px-4"
+                        className="btn flex gap-3 rounded-lg border-none bg-transparent px-2 text-sm text-[#1d271f] shadow-none sm:px-4"
                     >
                         {user.image ? (
                             <Image

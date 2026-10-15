@@ -6,7 +6,7 @@ import { headers } from 'next/headers'
 export async function proxy(request) {
 
     const session = await auth.api.getSession({
-    headers: await headers() // you need to pass the headers object.
+    headers: await headers() 
 })
     const user = session?.user;
     if(!user){
