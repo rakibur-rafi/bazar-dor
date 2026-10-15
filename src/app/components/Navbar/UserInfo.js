@@ -1,29 +1,52 @@
-
 "use client";
 
 import React from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/dist/server/api-utils";
 import Image from "next/image";
 import { FaUserCircle } from "react-icons/fa";
 import { IoChevronDownOutline } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const UserInfo = () => {
-    const { data: session } = authClient.useSession();
+    const router = useRouter();
+
+    const { data: session, isPending } = authClient.useSession();
     const user = session?.user;
 
     const handleLogout = async () => {
-        await authClient.signOut();
+        const { error } = await authClient.signOut();
+
+        if (!error) {
+            toast.success("সাইন আউট সফল হয়েছে");
+            router.push("/");
+        } else {
+            toast.error("সাইন আউট করা যায়নি");
+        }
     };
 
+if (isPending) {
+    return (
+        <div className="flex items-center gap-3">
+            <div className="skeleton h-8 w-8 shrink-0 rounded-xl bg-gray-200"></div>
+
+            <div className="hidden flex-col gap-2 sm:flex">
+                <div className="skeleton h-3 w-20 bg-gray-200"></div>
+            </div>
+
+            <div className="skeleton h-8 w-8 rounded-lg bg-gray-200 sm:hidden"></div>
+        </div>
+    );
+}
     return (
         <div>
             {user ? (
                 <div className="dropdown dropdown-end">
                     <div
                         tabIndex={0}
-                        className="btn rounded-lg border-none bg-white px-2 text-sm text-[#1d271f] shadow-none sm:px-4 flex gap-3"
+                        role="button"
+                        className="btn flex gap-3 rounded-lg border-none bg-white px-2 text-sm text-[#1d271f] shadow-none sm:px-4"
                     >
                         {user.image ? (
                             <Image
@@ -50,7 +73,7 @@ const UserInfo = () => {
                     >
                         <li className="pointer-events-none pb-3">
                             <div className="flex flex-col items-start gap-1">
-                                <span className="font-semibold text-sm text-[#1d271f]">
+                                <span className="text-sm font-semibold text-[#1d271f]">
                                     {user.name}
                                 </span>
 
@@ -63,17 +86,16 @@ const UserInfo = () => {
                         <li>
                             <Link
                                 href="/profile"
-                                className="rounded-lg  text-[#1d271f] hover:bg-[#f0f5f0]"
+                                className="rounded-lg text-[#1d271f] hover:bg-[#f0f5f0]"
                             >
                                 আমার প্রোফাইল
                             </Link>
                         </li>
 
-                        {/* Logout */}
                         <li>
                             <button
                                 onClick={handleLogout}
-                                className="rounded-lg  text-red-600 hover:bg-red-50"
+                                className="rounded-lg text-red-600 hover:bg-red-50"
                             >
                                 সাইন আউট
                             </button>

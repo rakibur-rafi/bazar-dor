@@ -8,6 +8,10 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
 const SignIn = () => {
+    const { data: session, isPending } = authClient.useSession();
+        const user = session?.user;
+        if(isPending) return (<div className="flex min-h-[50vh] items-center justify-center"><span className="loading loading-spinner loading-lg text-[#05893E]" /></div>);
+        if(user) return redirect('/');
     const onSubmit= async(e)=>{
             e.preventDefault();
             const formData = new FormData(e.target);

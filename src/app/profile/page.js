@@ -95,7 +95,6 @@ const Profile = () => {
                    <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
                     <Link href="/profile/update" className="">
                         <button
-                        onClick={handleLogout}
                         className="btn w-full bg-[#05893E] border shadow-none border-[#E1E8E1] rounded-xl text-white sm:w-auto"
                     >
                         <FiEdit3 className="h-4 w-4" />
